@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { setSelectedProduct } from '../redux/slices/productSlice';
 import { HiOutlinePlusCircle } from "react-icons/hi2";
 import { HiOutlineMinusCircle } from "react-icons/hi2";
+import { addToBasket, calculateBasket } from '../redux/slices/basketSlice';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -20,6 +21,19 @@ const ProductDetails = () => {
 
     const decrement = () => {
         setCount(count - 1);
+    }
+
+    const addBasket = () => {
+        const payload = {
+            id,
+            price,
+            image,
+            title,
+            description,
+            count,
+        }
+        dispatch(addToBasket(payload));
+        dispatch(calculateBasket());
     }
 
     useEffect(() => {
@@ -50,7 +64,8 @@ const ProductDetails = () => {
                     <HiOutlineMinusCircle onClick={decrement} style={{ fontSize: '40px', marginLeft:'5px' }} />
                 </div>
                 <div>
-                    <button style={{
+                    <button onClick={addBasket}
+                    style={{
                         width:'100%',
                         marginTop:'25px',
                         border:'none',
