@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdRemoveCircleOutline } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
@@ -12,6 +12,8 @@ interface TodoProps {
 
 const Todo = ({ todoProps }: TodoProps) => {
   const { id, content } = todoProps;
+
+  const [editable, setEditable] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -37,7 +39,11 @@ const Todo = ({ todoProps }: TodoProps) => {
           className="icons"
           style={{ marginRight: "10px" }}
         />
-        <FaRegEdit className="icons" />
+        {editable ? (
+          <FaCheck className="icons" />
+        ) : (
+          <FaRegEdit onClick={()=>setEditable(true)} className="icons" />
+        )}
       </div>
     </div>
   );
