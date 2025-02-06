@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(39, 38, 25);
+    color: white;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+form {
+    width: 500px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+
+.inputDiv {
+    margin: 30px 0;
+}
+
+.inputError {
+    color: rgb(235, 49, 49);
+    font-size: 14px;
+}
+
+.saveButton {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(62, 143, 105);
+    color: white;
+    cursor: pointer;
+}
